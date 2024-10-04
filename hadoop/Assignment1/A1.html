@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title>ASSIGNMENT 1 - UE22CS343AB2 - BIG DATA - HackMD</title>
+	<meta name="generator" content="LibreOffice 7.3.7.2 (Linux)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="2024-10-04T18:05:53.857055351"/>
+	<meta name="description" content="This assignment introduces an alternative input method - JSON and multi-stage Map-Reduce."/>
+	<meta name="" content=""/>
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+	<meta name="csrf-token" content="YWV7EVku-roI8LKkzkqIMA_MhMkwyueA5SCU"/>
+	<meta name="mobile-web-app-capable" content="yes"/>
+	<meta name="signin" content="true"/>
+	<meta name="twitter:card" content="summary"/>
+	<meta name="twitter:description" content="This assignment introduces an alternative input method - JSON and multi-stage Map-Reduce."/>
+	<meta name="twitter:image:alt" content="ASSIGNMENT 1 - UE22CS343AB2 - BIG DATA - HackMD"/>
+	<meta name="twitter:image:src" content="https://lh3.googleusercontent.com/a/ACg8ocLqJ4tt7pFbHauN_dNfg7A9xJc7d_U3PSyIfo9hq7yN=s96-c"/>
+	<meta name="twitter:site" content="@hackmdio"/>
+	<meta name="twitter:title" content="ASSIGNMENT 1 - UE22CS343AB2 - BIG DATA - HackMD"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="" content="1436904003272070">
+	<meta name="" content="https://lh3.googleusercontent.com/a/ACg8ocLqJ4tt7pFbHauN_dNfg7A9xJc7d_U3PSyIfo9hq7yN=s96-c">
+	<meta name="" content="ASSIGNMENT 1 - UE22CS343AB2 - BIG DATA - HackMD">
+	<meta name="" content="HackMD">
+	<meta name="" content="article">
+	<meta name="" content="ASSIGNMENT 1 - UE22CS343AB2 - BIG DATA - HackMD">
+	<meta name="" content="This assignment introduces an alternative input method - JSON and multi-stage Map-Reduce.">
+	<meta name="" content="">
+	<style type="text/css">
+		p { color: #000000; margin-bottom: 0.25cm }
+		h1 { color: #000000 }
+		h2 { color: #000000 }
+		pre { color: #000000 }
+		h3 { color: #000000 }
+		h4 { color: #000000 }
+	</style>
+</head>
+<body lang="en-IN" text="#000000" dir="ltr">
+<form action="" method="post">
+	<input type="hidden" name="_csrf" value="YWV7EVku-roI8LKkzkqIMA_MhMkwyueA5SCU">
+	<input type="hidden" name="create_team" value="false">
+	<input type="hidden" name="create_paid_team" value="false">
+</form>
+<form action="/auth/google" method="post">
+	<input type="hidden" name="credential">
+	<input type="hidden" name="method">
+</form>
+<div id="publish-page" dir="ltr"><p><br/>
+<br/>
+
+	</p>
+	<div id="meta-title-tags" dir="ltr"><p style="margin-bottom: 0cm">ASSIGNMENT
+		1 - UE22CS343AB2 - BIG DATA</p>
+	</div>
+	<div id="doc" dir="ltr"><p><br/>
+<br/>
+
+		</p>
+		<div id="doc-body" dir="ltr"><h1>ASSIGNMENT 1 - UE22CS343AB2 - BIG
+			DATA</h1>
+			<h2><a name="Introduction"></a>Introduction</h2>
+			<p>This assignment introduces an alternative input method - JSON
+			and multi-stage Map-Reduce.</p>
+			<h2><a name="Assignment-Objectives-and-Outcomes"></a>Assignment
+			Objectives and Outcomes</h2>
+			<ul>
+				<li><p style="margin-bottom: 0cm">Get familiar with map reduce 
+				</p>
+				<li><p style="margin-bottom: 0cm">Get familiar with aggregation
+				using map reduce 
+				</p>
+				<li><p>Working with hadoop 
+				</p>
+			</ul>
+			<h2><a name="Ethical-Practices"></a>Ethical Practices</h2>
+			<p>Please submit original code only. All solutions must be
+			submitted through the portal. We will perform a plagiarism check
+			on the code and you will be penalized if your code is found to be
+			plagiarized.</p>
+			<h2><br/>
+<br/>
+
+			</h2>
+			<h2><a name="Submission-Guidelines"></a>Submission Guidelines</h2>
+			<p>You will need to make the following changes to your Python
+			scripts before submitting them.</p>
+			<p>Include the following shebang at the top of your Python
+			scripts.</p>
+			<pre style="margin-bottom: 0.5cm"><code>#!/usr/bin/env python3</code></pre><p>
+			Convert your files to executable using the following command.</p>
+			<pre style="margin-bottom: 0.5cm"><code>chmod +x *.py</code></pre><p>
+			Convert line breaks in DOS format to Unix format (this is
+			necessary if you are coding on Windows without which your code
+			will not run on our portal).</p>
+			<pre style="margin-bottom: 0.5cm"><code>dos2unix *.py</code></pre><h2>
+			<a name="SoftwareLanguages-to-be-used"></a>Software/Languages to
+			be used:</h2>
+			<ul>
+				<li><p style="margin-bottom: 0cm"><code>Python 3.10.x</code> 
+				</p>
+				<li><p><code>Hadoop v3.3.3+</code> 
+				</p>
+			</ul>
+			<p>NOTE : STRICTLY NOT ALLOWED TO IMPORT ANY AND ALL PACKAGES IN
+			MAPPER AND REDUCER. The packages that can be imported are
+			mentioned below.</p>
+			<h2><a name="Specification"></a>Specification</h2>
+			<h2><a name="Task-1-Store-Profit-and-Loss"></a>Task 1: Store
+			Profit and Loss</h2>
+			<h3><a name="Story-Background"></a>Story Background:</h3>
+			<p>You are given data from a retail chain in India that sells a
+			wide range of products, including groceries, home appliances,
+			beauty items, apparel and many more goods in multiple cities
+			across the country. However, not all stores in the chain sell
+			every product category. Each store has its own top-selling
+			categories based on consumer demand. Only these top-selling
+			categories will determine the profit gained or the loss incurred
+			by a store.</p>
+			<p>Given the input, your task is to determine:</p>
+			<ol>
+				<li><p style="margin-bottom: 0cm">The number of stores that are
+				profitable for each city. 
+				</p>
+				<li><p>The number of stores operating at a loss for each city. 
+				</p>
+			</ol>
+			<h4><a name="Points-to-be-Considered"></a>Points to be Considered:</h4>
+			<ol>
+				<li><p style="margin-bottom: 0cm">Sales data (Revenue and COGS)
+				for a product category (top-selling or not) may or may not be
+				recorded. 
+				</p>
+				<li><p style="margin-bottom: 0cm">Net results (Profit or Loss)
+				for each store is only calculated if there exists Sales data for
+				atleast some top-selling category. 
+				</p>
+				<li><p>If Net results &gt; 0, it is a profitable store, otherwise
+				it's incurring a loss. 
+				</p>
+			</ol>
+			<h3><a name="Mapper"></a>Mapper</h3>
+			<p>Input : Array of JSON Objects</p>
+			<h4><a name="Heres-a-prettified-version-of-an-example-JSON-object"></a>
+			Here's a prettified version of an example JSON object:</h4>
+			<pre><code>{</code>
+<code>  &quot;city&quot;: &quot;Bangalore&quot;,</code>
+<code>  &quot;store_id&quot;: &quot;ST01293&quot;,</code>
+<code>  &quot;categories&quot;: [</code>
+<code>    &quot;Electronics&quot;,</code>
+<code>    &quot;Groceries&quot;</code>
+<code>  ],</code>
+<code>  &quot;sales_data&quot;: {</code>
+<code>    &quot;Electronics&quot;: {</code>
+<code>      &quot;revenue&quot;: 600000,</code>
+<code>      &quot;cogs&quot;: 500000</code>
+<code>    },</code>
+<code>    &quot;Groceries&quot;: {</code>
+<code>      &quot;revenue&quot;: 250000,</code>
+<code>      &quot;cogs&quot;: 270000</code>
+<code>    }</code>
+<code>  }</code>
+<code>}</code></pre><p>
+			Example Input :</p>
+			<pre><code>[</code>
+<code>{&quot;city&quot;: &quot;Bangalore&quot;, &quot;store_id&quot;: &quot;ST01293&quot;, &quot;categories&quot;: [&quot;Electronics&quot;, &quot;Groceries&quot;], &quot;sales_data&quot;: {&quot;Electronics&quot;: {&quot;revenue&quot;: 600000, &quot;cogs&quot;: 500000}, &quot;Groceries&quot;: {&quot;revenue&quot;: 250000, &quot;cogs&quot;: 270000}}},</code>
+<code>{&quot;city&quot;: &quot;Chennai&quot;, &quot;store_id&quot;: &quot;ST04567&quot;, &quot;categories&quot;: [&quot;Pharmacy and Health&quot;, &quot;Kitchen&quot;, &quot;Toys and Stationery&quot;], &quot;sales_data&quot;: {&quot;Kitchen&quot;: {&quot;revenue&quot;: 800000, &quot;cogs&quot;: 900000}, &quot;Toys and Stationery&quot;: {&quot;revenue&quot;: 300000, &quot;cogs&quot;: 450000}, &quot;Pharmacy and Health&quot;: {&quot;revenue&quot;: 450000, &quot;cogs&quot;: 470000}}},</code>
+<code>{&quot;city&quot;: &quot;Mumbai&quot;, &quot;store_id&quot;: &quot;ST05432&quot;, &quot;categories&quot;: [&quot;Books and Magazines&quot;, &quot;Pharmacy and Health&quot;], &quot;sales_data&quot;: {&quot;Books and Magazines&quot;: {&quot;revenue&quot;: 200000, &quot;cogs&quot;: 150000}, &quot;Pharmacy and Health&quot;: {&quot;revenue&quot;: 350000, &quot;cogs&quot;: 300000}}},</code>
+<code>{&quot;city&quot;: &quot;Mumbai&quot;, &quot;store_id&quot;: &quot;ST08345&quot;, &quot;categories&quot;: [&quot;Groceries&quot;], &quot;sales_data&quot;: {&quot;Groceries&quot;: {&quot;revenue&quot;: 700000, &quot;cogs&quot;: 650000}}},</code>
+<code>{&quot;city&quot;: &quot;Chennai&quot;, &quot;store_id&quot;: &quot;ST06789&quot;, &quot;categories&quot;: [&quot;Home Decor&quot;, &quot;Apparel&quot;], &quot;sales_data&quot;: {&quot;Apparel&quot;: {&quot;revenue&quot;: 850000, &quot;cogs&quot;: 800000}, &quot;Home Decor&quot;: {&quot;revenue&quot;: 500000, &quot;cogs&quot;: 450000}}},</code>
+<code>{&quot;city&quot;: &quot;Bangalore&quot;, &quot;store_id&quot;: &quot;ST09874&quot;, &quot;categories&quot;: [&quot;Apparel&quot;], &quot;sales_data&quot;: {&quot;Apparel&quot;: {&quot;revenue&quot;: 620000, &quot;cogs&quot;: 600000}}}</code>
+<code>]</code></pre><p>
+			NOTE : <strong>Do not</strong> load the entire dataset as the test
+			case we use will be extremely large and will crash the server. You
+			will be blacklisted in that case.</p>
+			<p><strong>Net Returns Formula</strong> = Revenue - COGS COGS =
+			Cost of Goods and Services</p>
+			<h3><a name="Reducer"></a>Reducer</h3>
+			<p>Input : Same format as Mapper output</p>
+			<p>Output : Independent JSON Objects</p>
+			<ul>
+				<li><p>output of the reducer has the following keys : name of the
+				city, number of profitable stores and number of stores at a loss.
+								</p>
+			</ul>
+			<p>Example Output:</p>
+			<pre><code>{&quot;city&quot;: &quot;Bangalore&quot;, &quot;profit_stores&quot;: 2, &quot;loss_stores&quot;: 0}</code>
+<code>{&quot;city&quot;: &quot;Chennai&quot;, &quot;profit_stores&quot;: 1, &quot;loss_stores&quot;: 1}</code>
+<code>{&quot;city&quot;: &quot;Mumbai&quot;, &quot;profit_stores&quot;: 2, &quot;loss_stores&quot;: 0}</code></pre><h3>
+			<a name="Sample-Input"></a>Sample Input</h3>
+			<ol>
+				<li><p style="margin-bottom: 0cm"><a href="https://drive.google.com/file/d/1OdAIdUVKWQb1ndU_m_x6iWuAUiTS6ksG/view?usp=sharing" target="_blank">small_data.json</a>
+								</p>
+				<li><p>expected_output_small_data.txt for the above input 
+				</p>
+			</ol>
+			<pre><code>{&quot;city&quot;: &quot;Ahmedabad&quot;, &quot;profit_stores&quot;: 3, &quot;loss_stores&quot;: 5}</code>
+<code>{&quot;city&quot;: &quot;Bangalore&quot;, &quot;profit_stores&quot;: 5, &quot;loss_stores&quot;: 3}</code>
+<code>{&quot;city&quot;: &quot;Chennai&quot;, &quot;profit_stores&quot;: 3, &quot;loss_stores&quot;: 5}</code>
+<code>{&quot;city&quot;: &quot;Delhi&quot;, &quot;profit_stores&quot;: 3, &quot;loss_stores&quot;: 4}</code>
+<code>{&quot;city&quot;: &quot;Hyderabad&quot;, &quot;profit_stores&quot;: 3, &quot;loss_stores&quot;: 5}</code>
+<code>{&quot;city&quot;: &quot;Jaipur&quot;, &quot;profit_stores&quot;: 3, &quot;loss_stores&quot;: 5}</code>
+<code>{&quot;city&quot;: &quot;Kanpur&quot;, &quot;profit_stores&quot;: 0, &quot;loss_stores&quot;: 8}</code>
+<code>{&quot;city&quot;: &quot;Kolkata&quot;, &quot;profit_stores&quot;: 8, &quot;loss_stores&quot;: 1}</code>
+<code>{&quot;city&quot;: &quot;Lucknow&quot;, &quot;profit_stores&quot;: 8, &quot;loss_stores&quot;: 0}</code>
+<code>{&quot;city&quot;: &quot;Mumbai&quot;, &quot;profit_stores&quot;: 4, &quot;loss_stores&quot;: 4}</code>
+<code>{&quot;city&quot;: &quot;Pune&quot;, &quot;profit_stores&quot;: 2, &quot;loss_stores&quot;: 5}</code>
+<code>{&quot;city&quot;: &quot;Surat&quot;, &quot;profit_stores&quot;: 3, &quot;loss_stores&quot;: 5}</code>
+</pre><h3>
+			<a name="Test-Dataset"></a>Test Dataset</h3>
+			<p>Test your code with the following dataset once it passes the
+			sample input dataset</p>
+			<ol>
+				<li><p style="margin-bottom: 0cm"><strong>Input</strong>:
+				<a href="https://drive.google.com/file/d/1Eq3BtsX6rNwr2ho3LbnXWAirw1QGVe6v/view?usp=sharing" target="_blank">large_data.json</a>
+								</p>
+				<li><p><strong>Output</strong>: <a href="https://drive.google.com/file/d/1qQSd5WHha60TBm31WUPilsAdp63yZ9WH/view?usp=sharing" target="_blank">expected_output_large_data.txt</a>
+								</p>
+			</ol>
+			<p>All the files can be found <a href="https://drive.google.com/drive/folders/1273OnIOzqQTJ14AKAY_6TN-Jy_eogfJM?usp=sharing" target="_blank">here</a>.</p>
+			<h3><a name="Instructions"></a>Instructions</h3>
+			<ol>
+				<li><p style="margin-bottom: 0cm">Write a python mapper 
+				</p>
+				<ul>
+					<li><p style="margin-bottom: 0cm">Name : <code>mapper.py</code> 
+					</p>
+					<li><p style="margin-bottom: 0cm">Read the specification for
+					input and output as mentioned above 
+					</p>
+					<li><p style="margin-bottom: 0cm">Only packages that can be
+					imported are : json and sys 
+					</p>
+				</ul>
+				<li><p style="margin-bottom: 0cm">Write a python reducer to
+				perform the aggregation 
+				</p>
+				<ul>
+					<li><p style="margin-bottom: 0cm">Name : <code>reducer.py</code>
+										</p>
+					<li><p style="margin-bottom: 0cm">Read the specification for
+					input and output as mentioned above 
+					</p>
+					<li><p style="margin-bottom: 0cm">Only packages that can be
+					imported are : json and sys 
+					</p>
+				</ul>
+				<li><p style="margin-bottom: 0cm">Test it out with the sample
+				dataset given and check the expected output 
+				</p>
+				<li><p>Adhere to the submission guidelines 
+				</p>
+			</ol>
+			<h3><a name="Testing-instructions"></a>Testing instructions</h3>
+			<h4><a name="Local-testing"></a>Local testing</h4>
+			<pre style="margin-bottom: 0.5cm"><code>cat &lt;path_to_dataset&gt;.json | ./mapper.py | sort -k 1,1 | ./reducer.py</code></pre><h4>
+			<a name="Hadoop-testing"></a>Hadoop testing</h4>
+			<pre><code>hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-&lt;hadoop_version&gt;.jar \</code>
+<code>-mapper &quot;$PWD/mapper.py&quot; \</code>
+<code>-reducer &quot;$PWD/reducer.py&quot; \</code>
+<code>-input  &lt;path_to_input_in_hdfs&gt; \</code>
+<code>-output &lt;path_to_output_folder_in_hdfs&gt;</code></pre><h2>
+			<a name="TASK-2-Load-Balancer"></a>TASK 2: Load Balancer</h2>
+			<h3><a name="Story-Background22"></a>Story Background:</h3>
+			<p>A Company's team was assigned to predict the status codes that
+			clients would receieve while hitting the company's endpoints,
+			while taking into consideration the traffic received on a certain
+			endpoint at a given time, as well as the reliability of the
+			servers handling the requests. You are given a dataset with the
+			information regarding all the requests made by clients during the
+			day. The predicted status codes by the team are also provided. You
+			are to validate the dataset given and evaluate each client's
+			success metric.</p>
+			<h2><a name="Metadata-for-the-Dataset"></a>Metadata for the
+			Dataset:</h2>
+			<h3><a name="Request-ID-rX"></a><strong>Request ID (rX):</strong></h3>
+			<p>A unique identifier for each request. This is used to
+			differentiate between different requests in the dataset.</p>
+			<h3><a name="Client-ID-cX"></a><strong>Client ID (cX):</strong></h3>
+			<p>Identifies the client making the request. Each client is
+			associated with a unique ID, which can be used to track the
+			activity or behavior of individual clients.</p>
+			<h3><a name="Endpoint-endpoint"></a><strong>Endpoint (endpoint):</strong></h3>
+			<p>Represents the specific service or function the request is
+			accessing.</p>
+			<p><strong>user/profile:</strong> Access or update user profile
+			information. <strong>user/settings:</strong> Modify user settings,
+			such as privacy or notification preferences. <strong>order/history:</strong>
+			Retrieve the history of past orders. <strong>order/checkout:</strong>
+			Complete the checkout process for an order. <strong>product/details:</strong>
+			View detailed information about a specific product.
+			<strong>product/search:</strong> Search for products based on
+			certain criteria. <strong>cart/add:</strong> Add an item to the
+			shopping cart. <strong>cart/remove:</strong> Remove an item from
+			the shopping cart. <strong>payment/submit:</strong> Submit payment
+			information to complete a purchase. <strong>support/ticket:</strong>
+			Create or view support tickets for customer service.</p>
+			<p>Each endpoint is associated with a price, which is used to
+			calculate the total_price for each client. The price for all the
+			endpoints is given below.</p>
+			<pre><code>        'user/profile': 100</code>
+<code>        'user/settings': 200</code>
+<code>        'order/history': 300</code>
+<code>        'order/checkout': 400</code>
+<code>        'product/details': 500</code>
+<code>        'product/search': 600</code>
+<code>        'cart/add': 700</code>
+<code>        'cart/remove': 800</code>
+<code>        'payment/submit': 900</code>
+<code>        'support/ticket': 1000</code></pre><h3>
+			<a name="Timestamp-HHMMSS"></a><strong>Timestamp (HH:MM:SS):</strong></h3>
+			<p>Indicates the time at which the request was made in hours,
+			minutes, and seconds. This can be used for analyzing patterns in
+			request timing or for sequencing events.</p>
+			<h3><a name="Downtime-Noof-servers"></a><strong>Downtime (No.of
+			servers):</strong></h3>
+			<p>Reflects the no.of servers down. A value of 0.0 indicates no
+			servers are down at that second.</p>
+			<h3><a name="Predicted-Status-Code"></a>Predicted Status Code:</h3>
+			<p>Represents the status codes predicted by the Company's team for
+			each client request. These predictions may or may not be correct.</p>
+			<p>500 - Internal Server Error 200 - Successful Request</p>
+			<h2><a name="Objective"></a>Objective</h2>
+			<p>Direct each incoming request to an available server assigned to
+			the respective endpoint, given that each endpoint has 3 servers
+			which may or may not be down at different timestamps. The goal is
+			to determine the number of successfully predicted requests by the
+			team for each client and calculate each client's total_price,
+			based on the fixed price associated with each endpoint.</p>
+			<h3><a name="Points-to-be-considered-"></a>Points to be considered
+			:</h3>
+			<ol>
+				<li><p style="margin-bottom: 0cm">The requests in the same
+				timestamp must be processed in the lexicographical order. 
+				</p>
+				<li><p style="margin-bottom: 0cm">A Single client is only allowed
+				to hit one endpoint at a given timestamp. Other requests are not
+				processed and are not taken into consideration for evaluation. 
+				</p>
+				<li><p>The time taken to handle a client request by any server is
+				1 second. 
+				</p>
+			</ol>
+			<h2><a name="Example"></a>Example</h2>
+			<h3><a name="Input"></a>Input</h3>
+			<p>The input file is a .txt file which is space seperated for
+			request_id, client_id, endpoint, timestamp and no_of_servers_down.
+			Space seperated for request_id and predicted_status_code.</p>
+			<h3><a name="Sample-Input34"></a>Sample Input</h3>
+			<pre><code>request_id client_id endpoint timestamp no_of_servers_down  </code>
+
+<code>request_id predicted_status_code</code>
+<code>r001 c01 user/profile 00:00:00 2.0        #200 </code>
+<code>r002 c02 user/profile 00:00:00 2.0        #500</code>
+<code>r003 c03 user/settings 00:01:02           #200</code>
+<code>r004 c01 order/history 00:01:05 2.0       #200</code>
+<code>r005 c05 order/history 00:05:03 3.0       #500</code>
+<code>r006 c03 order/history 00:05:03 3.0       #500</code>
+<code>r007 c02 user/settings 00:07:00 1.0       #200</code>
+<code>r008 c03 user/settings 00:07:05           #200</code>
+<code>r009 c01 user/profile 00:08:00            #200</code>
+<code>r010 c04 user/profile 00:08:05 3.0        #500</code>
+
+<code>r001 500</code>
+<code>r002 500</code>
+<code>r003 200</code>
+<code>r004 200</code>
+<code>r005 500</code>
+<code>r006 500</code>
+<code>r007 200</code>
+<code>r008 200</code>
+<code>r009 500</code>
+<code>r010 200</code></pre><h4>
+			<a name="Note--The-status-codes-given-in--in-the-sample-dataset-above-are-the-correctly-evaluated-status-codes-and-are-ONLY-given-for-your-reference-These-values-are-NOT-part-of-the-actual-datasets"></a>
+			Note : The status codes given in '#' in the sample dataset above
+			are the correctly evaluated status codes and are ONLY given for
+			your reference. These values are NOT part of the actual datasets.</h4>
+			<h3><a name="Output"></a>Output</h3>
+			<pre style="margin-bottom: 0.5cm"><code>client_id  successful_predictions/total_requests  total_price</code>
+<code>c01 1/3 500</code>
+<code>c02 2/2 200</code>
+<code>c03 3/3 400</code>
+<code>c04 0/1 0</code>
+<code>c05 1/1 0</code></pre><h3>
+			<a name="Metrics-"></a>Metrics :</h3>
+			<p><strong>successful_predictions/total_requests</strong>: The
+			ratio of status codes successfully predicted by the Company's team
+			to the total number of processed requests for that client.</p>
+			<p><strong>total_price</strong>: The total cost incurred by a
+			client successfully hitting the endpoints.</p>
+			<h3><a name="Workflow-Constraints-"></a>Workflow Constraints :</h3>
+			<ol>
+				<li><p style="margin-bottom: 0cm">You are obligated to use
+				exactly three stages to account to this solution. (i.e. three
+				pairs of Mappers and Reducers) 
+				</p>
+				<li><p style="margin-bottom: 0cm">Do not import any external
+				modules. Use modules only available in the default python
+				package. 
+				</p>
+				<li><p>The output should be in space separated format. 
+				</p>
+			</ol>
+			<h3><a name="Test-Dataset39"></a>Test Dataset</h3>
+			<p>Test your code with the following datasets. Dataset: <a href="https://drive.google.com/drive/folders/1T6ni23cq7JA23h7JAlMVqwl3XgYapDGK?usp=sharing" target="_blank">Data
+			Folder</a> The folder includes small and large dataset with
+			expected outputs for both the files.</p>
+		</div>
+	</div>
+</div>
+</body>
+</html>
