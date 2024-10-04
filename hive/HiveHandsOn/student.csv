@@ -1,0 +1,17 @@
+ID,Name,Age,GPA,Course,DeptId
+1,Arjun Kumar,20,8.5,Big Data,1
+2,Priya Singh,22,8.8,Graph Theory,2
+3,Amit Sharma,21,8.2,DA,1
+4,Ravi Patel,28,8.7,Big Data,2
+5,Neha Gupta,20,8.6,Graph Theory,3
+6,Vikram Reddy,22,8.9,DA,1
+7,Anjali Nair,21,8.4,Big Data,3
+8,Manish Mehta,28,8.1,Graph Theory,4
+9,Sunita Rao,20,8.8,DA,1
+10,Rahul Verma,22,8.5,Big Data,4
+11,Meera Iyer,21,8.7,Graph Theory,5
+12,Rohan Desai,28,8.6,DA,1
+13,Preeti Kaur,20,8.4,Big Data,5
+14,Sachin Bhatia,22,8.8,Graph Theory,2
+15,Anita Chawla,21,8.5,DA,1
+
