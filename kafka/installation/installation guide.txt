@@ -1,0 +1,38 @@
+To run the scripts, run the following commands:
+
+chmod +x *.sh
+dos2unix *.sh
+source spark.sh
+source kafka.sh
+
+
+
+Additionally, for Mac M1 or M2 users, change line 64 in your Kafka script to this:
+
+sudo echo "Environment="JAVA_HOME=/usr/lib/jvm/java-8-openjdk-arm64"" *>>* /etc/systemd/system/kafka.service
+
+
+
+The commands to start and stop spark are as follows:
+
+To start spark
+/opt/spark/sbin/start-all.sh
+
+To stop spark
+/opt/spark/sbin/stop-all.sh
+
+
+
+The commands to start and stop kafka are as follows:
+
+To start Kafka
+sudo systemctl start kafka
+
+To check the status of Kafka
+sudo systemctl status kafka
+
+To stop kafka
+sudo systemctl stop kafka
+
+
+
